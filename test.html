@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <style>
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #square {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin: 50px auto;
+      /* Initially, no spinning */
+    }
+
+    /* Animation class for spinning */
+    .spin {
+      animation: spin 2s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <button id="play-button">Play</button>
+  <div id="square"></div>  <!-- Square element that will spin -->
+  <script>
+    let isPlaying = false;
+    const playButton = document.getElementById('play-button');
+    const square = document.getElementById('square');
+
+    playButton.addEventListener('click', () => {
+      if (!isPlaying) {
+        square.classList.add('spin');  // Add spin class to start animation
+        playButton.textContent = 'Pause';
+        isPlaying = true;
+      } else {
+        square.classList.remove('spin');  // Remove spin class to stop animation
+        playButton.textContent = 'Play';
+        isPlaying = false;
+      }
+    });
+  </script>
+</body>
+</html>
